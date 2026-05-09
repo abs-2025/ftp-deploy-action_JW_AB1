@@ -1,0 +1,47 @@
+name: FTP Deploy Action
+description: 'Smart FTP deploy with git diff and hash comparison'
+author: 'abs-2025'
+
+inputs:
+  server:
+    description: 'FTP server address'
+    required: true
+
+  username:
+    description: 'FTP username'
+    required: true
+
+  password:
+    description: 'FTP password'
+    required: true
+
+  local-dir:
+    description: 'Local folder to upload'
+    required: false
+    default: './'
+
+  server-dir:
+    description: 'Remote folder on FTP server'
+    required: false
+    default: './'
+
+  exclude:
+    description: 'Files to exclude (glob patterns, one per line)'
+    required: false
+    default: |
+      **/.git*
+      **/node_modules/**
+
+  dry-run:
+    description: 'Preview changes without uploading'
+    required: false
+    default: 'false'
+
+  delete:
+    description: 'Delete files on server that are not in repo'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
