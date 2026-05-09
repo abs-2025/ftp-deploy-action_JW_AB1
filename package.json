@@ -4,7 +4,7 @@
   "description": "Smart FTP deploy GitHub Action with git diff + hash comparison",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "ncc build src/index.ts -o dist --minify",
     "start": "node dist/index.js"
   },
   "repository": {
@@ -21,11 +21,12 @@
   "devDependencies": {
     "@types/minimatch": "^6.0.0",
     "@types/node": "^25.6.2",
+    "@vercel/ncc": "^0.38.4",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@actions/core": "^3.0.1",
+    "@actions/core": "^1.10.1",
     "basic-ftp": "^6.0.1",
     "glob": "^13.0.6",
     "minimatch": "^10.2.5"
